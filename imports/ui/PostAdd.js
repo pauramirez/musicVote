@@ -14,7 +14,7 @@ export default class PostAdd extends Component {
       <div className="PostAdd">
         <textarea
           type="text"
-          placeholder="Text"
+          placeholder="Enter your song"
           ref="text"/>
         <button
           onClick={

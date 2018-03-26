@@ -5,8 +5,6 @@ import {render} from "react-dom";
 import App from "../imports/ui/App";
 
 Meteor.startup(() => {
-  render(
-  	<App></App>,
-    document.getElementById("render-target")
-  	);
+  render(<App></App>,
+    document.getElementById("render-target"));
 });

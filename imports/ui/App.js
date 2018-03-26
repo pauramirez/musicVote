@@ -15,7 +15,7 @@ export class App extends Component {
   }
 
 
-  onVote(post, emoji) {
+  onVote(post, song) {
     let postObj = Posts.findOne(post._id);
 
     if (!postObj) {
@@ -24,10 +24,10 @@ export class App extends Component {
     }
 
     postObj.voteCount+=1;
-    if (postObj.votes[emoji]===undefined) {
-      postObj.votes[emoji]=0;
+    if (postObj.votes[song]===undefined) {
+      postObj.votes[song]=0;
     }
-    postObj.votes[emoji]+=1;
+    postObj.votes[song]+=1;
 
     Posts.update(postObj._id,
       postObj);
@@ -53,7 +53,8 @@ export class App extends Component {
     return (
       <div className="App">
         <h1>Music Vote</h1>
-
+        <p>Vote for your favorite song!</p>
+        <p>Or add your favorite one.</p>
         <PostList
           posts={this.props.posts}
           onVote={this.onVote.bind(this)}
