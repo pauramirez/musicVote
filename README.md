@@ -2,11 +2,9 @@
 
 To run your new app:                          
   cd musicVote                                
+  meteor add react-meteor-data
+  meteor npm install --save @babel/runtime
   meteor  
-
-
-Started proxy.                             
-=> Started MongoDB.                           
-=> Started your app.                          
+              
 
 => App running at: http://localhost:3000/

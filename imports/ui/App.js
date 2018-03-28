@@ -16,7 +16,7 @@ export class App extends Component {
 
 
   onVote(post, song) {
-    let postObj = Posts.findOne(post._id);
+    let postObj = posts.findOne(post._id);
 
     if (!postObj) {
       console.err("Post not found!");
@@ -39,10 +39,9 @@ export class App extends Component {
       text,
       voteCount:0,
       votes:{
-        "🤡":0,
-        "😡":0,
-        "😇":0,
-        "🏊":0
+        love:0,
+        like:0,
+        not:0
       }
     });
 
@@ -52,18 +51,27 @@ export class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>Music Vote</h1>
-        <p>Vote for your favorite song!</p>
-        <p>Or add your favorite one.</p>
-        <PostList
-          posts={this.props.posts}
-          onVote={this.onVote.bind(this)}
-          >
-        </PostList>
-        <PostAdd
-          onAdd={this.onAdd.bind(this)}
-          >
-        </PostAdd>
+        <div className="container">
+          <h2>Music Vote</h2>
+          <p>This is a web page for you to vote for your favorite song! Or add your favorite one.</p>
+          <p>This will show the first 10 songs according to the number of votes!</p>
+          <p>Let's play!</p>
+          <div className="col-sm-6">
+            <PostList
+              posts={this.props.posts}
+              onVote={this.onVote.bind(this)}
+            >
+            </PostList>
+            <br/>
+            <PostAdd
+              onAdd={this.onAdd.bind(this)}
+            >
+            <div className="col-sm-6">
+          <a href="https://www.youtube.com/results?search_query=">Video</a>
+          </div>
+          </PostAdd>
+          </div>
+          </div>
       </div>
     );
   }
@@ -80,3 +88,4 @@ export default withTracker(
     };
   }
 )(App);
+
