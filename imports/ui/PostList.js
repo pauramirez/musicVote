@@ -25,7 +25,8 @@ export default class PostList extends Component {
     return (
       <div className="PostList">
       <hr/>
-        <h2>Songs:🎤🎧</h2>
+        <h2>Songs:🎤🎧</h2>        
+        <h3>Canciones votadas</h3>
         <div className="row">
           {this.renderPosts()}
         </div>

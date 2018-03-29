@@ -16,7 +16,7 @@ export class App extends Component {
 
 
   onVote(post, song) {
-    let postObj = posts.findOne(post._id);
+    let postObj = Posts.findOne(post._id);
 
     if (!postObj) {
       console.err("Post not found!");
@@ -33,10 +33,13 @@ export class App extends Component {
       postObj);
   }
 
-  onAdd(text) {
+  onAdd(text,artist,url) {
     if (!text) return;
     Posts.insert({
       text,
+      //inclui el artista y url del video
+      artist,
+      url,
       voteCount:0,
       votes:{
         love:0,
@@ -44,7 +47,6 @@ export class App extends Component {
         not:0
       }
     });
-
   }
 
 
@@ -80,11 +82,12 @@ export class App extends Component {
 App.propTypes = {
   posts: PropTypes.array.isRequired
 };
-
+//conexión mongo 
 export default withTracker(
   () => {
     return {
-      posts: Posts.find({}, {sort: {voteCount:-1}}).fetch()
+      //lo limite al top 10 mas votadas
+      posts: Posts.find({}, {limit: 10,sort: {voteCount:-1}}).fetch()
     };
   }
 )(App);
