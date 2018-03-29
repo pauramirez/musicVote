@@ -26,6 +26,21 @@ export default class Post extends Component {
     return res;
   }
 
+  renderDelete() {
+    let res=[];
+    for (let song in this.props.post.delete) {
+      res.push(
+        <button
+          onClick={() =>
+            this.props.onDelete(
+              this.props.post,
+              song
+            )}
+          key={song}>{song} {this.props.post.delete[song]}</button>
+      );
+    }
+    return res;
+  }
 
   render() {
     return (
@@ -36,6 +51,7 @@ export default class Post extends Component {
         <div>Voted {this.props.post.voteCount} times</div>
         <div>Find it at: {this.props.post.url}</div>
         {this.renderVotes()}
+        {this.renderDelete()}
       </div>
     );
   }
