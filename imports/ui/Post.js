@@ -30,8 +30,11 @@ export default class Post extends Component {
   render() {
     return (
       <div className="Post">
-      <h3>Canciones votadas</h3>
+      <h3></h3>
         <div>{this.props.post.text}</div>
+        <div>By: {this.props.post.artist}</div>
+        <div>Voted {this.props.post.voteCount} times</div>
+        <div>Find it at: {this.props.post.url}</div>
         {this.renderVotes()}
       </div>
     );
