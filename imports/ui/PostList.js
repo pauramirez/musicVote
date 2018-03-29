@@ -16,6 +16,7 @@ export default class PostList extends Component {
     return this.props.posts.map((p,i) =>
       <Post
         onVote={this.props.onVote}
+        onDelete={this.props.onDelete}        
         key={i}
         post={p}>
       </Post>
@@ -37,5 +38,6 @@ export default class PostList extends Component {
 
 PostList.propTypes = {
   posts: PropTypes.array.isRequired,
-  onVote: PropTypes.func.isRequired
+  onVote: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired
 };

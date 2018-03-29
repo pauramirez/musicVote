@@ -5,9 +5,11 @@ import { withTracker } from "meteor/react-meteor-data";
 
 import PostList from "./PostList";
 import PostAdd from "./PostAdd";
+import PostFilter from "./PostFilter";
 import { Posts } from "../api/posts";
 
-
+var titulo =".*.*";
+//var titulo =".*a.*";
 export class App extends Component {
   constructor(props) {
     super(props);
@@ -33,6 +35,12 @@ export class App extends Component {
       postObj);
   }
 
+  onDelete(post, song) {
+    let postObj = Posts.findOne(post._id);
+
+    Posts.remove(postObj._id);
+  }
+
   onAdd(text,artist,url) {
     if (!text) return;
     Posts.insert({
@@ -45,12 +53,20 @@ export class App extends Component {
         love:0,
         like:0,
         not:0
+      },
+      delete:{
+        delete:""
       }
     });
   }
+  onFilter(text)
+  {  
+    var str1 = ".*"+text+".*";
+    titulo = str1;
+  }
 
 
-  render() {
+  render() {    
     return (
       <div className="App">
         <div className="container">
@@ -62,8 +78,14 @@ export class App extends Component {
             <PostList
               posts={this.props.posts}
               onVote={this.onVote.bind(this)}
+              onDelete={this.onDelete.bind(this)}
             >
             </PostList>
+            <br/>
+            <PostFilter
+              onFilter={this.onFilter.bind(this)}
+            >
+            </PostFilter>
             <br/>
             <PostAdd
               onAdd={this.onAdd.bind(this)}
@@ -87,7 +109,7 @@ export default withTracker(
   () => {
     return {
       //lo limite al top 10 mas votadas
-      posts: Posts.find({}, {limit: 10,sort: {voteCount:-1}}).fetch()
+      posts: Posts.find({"text" : {$regex : titulo}}, {limit: 10,sort: {voteCount:-1}}).fetch()
     };
   }
 )(App);
