@@ -12,10 +12,10 @@ export default class PostFilter extends Component {
   render() {
     return (
       <div className="PostFilter">
-        <textarea
+        <p>Find your song <br/><input
           type="text"
           placeholder="Find"
-          ref="text"/>
+          ref="text"/></p>
         <button
           onClick={
             () =>

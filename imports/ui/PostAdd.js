@@ -12,18 +12,18 @@ export default class PostAdd extends Component {
   render() {
     return (
       <div className="PostAdd">
-        <textarea
+        <p>Song: <br/><input
           type="text"
           placeholder="Enter your song"
-          ref="text"/>
-          <textarea
+          ref="text"/></p>
+          <p>Artist: <br/><input
           type="text"
           placeholder="Enter the artist's name"
-          ref="artist"/>
-          <textarea
+          ref="artist"/></p>
+          <p>Link to video: <br/><input
           type="text"
-          placeholder="Enter the video's youtube url"
-          ref="url"/>
+          placeholder="Enter the video's url"
+          ref="url"/></p>
         <button
           onClick={
             () =>
