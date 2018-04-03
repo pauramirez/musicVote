@@ -12,7 +12,7 @@ import { Posts } from "../api/posts";
 
 var titulo =".*.*";
 //var titulo =".*a.*";
-
+var currentUser ="";
 
 
 export class App extends Component {
@@ -22,6 +22,10 @@ export class App extends Component {
   constructor(props) {
     super(props);
 
+  }
+
+  getCurrentUser(){
+    currentUser = Meteor.user().username;
   }
 
   onRemoveVote(post, song) {
@@ -96,7 +100,7 @@ export class App extends Component {
     return (
       <div className="App">
          <AccountsUIWrapper />
-          <h2>Music Vote {Meteor.user()}</h2>
+          <h2>Music Vote {currentUser}</h2>
           <p>This is a web page for you to vote for your favorite song! Or add your favorite one.</p>
           <p>This will show the first 10 songs according to the number of votes!</p>
           <p>Let's play!</p>
