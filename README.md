@@ -35,17 +35,17 @@ Now execute this command in the root folder:
 
 meteor
 
-Built With:
+# Built With:
 
 METEOR@1.6.1
 React
 
-Authors
+# Authors
 
 Paula Ramirez Gonzalez 
 
 David Cubillos 
 
-License
+# License
 
 This project is licensed under the MIT License - see the LICENSE.md file for details
