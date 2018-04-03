@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withTracker } from "meteor/react-meteor-data";
 
+import AccountsUIWrapper from './AccountsUIWrapper';
+import { Meteor } from 'meteor/meteor';
 
 import PostList from "./PostList";
 import PostAdd from "./PostAdd";
@@ -10,7 +12,13 @@ import { Posts } from "../api/posts";
 
 var titulo =".*.*";
 //var titulo =".*a.*";
+
+
+
 export class App extends Component {
+
+
+
   constructor(props) {
     super(props);
 
@@ -87,7 +95,8 @@ export class App extends Component {
   render() {    
     return (
       <div className="App">
-          <h2>Music Vote</h2>
+         <AccountsUIWrapper />
+          <h2>Music Vote {Meteor.user()}</h2>
           <p>This is a web page for you to vote for your favorite song! Or add your favorite one.</p>
           <p>This will show the first 10 songs according to the number of votes!</p>
           <p>Let's play!</p>
@@ -117,6 +126,7 @@ export class App extends Component {
     );
   }
 }
+
 
 App.propTypes = {
   posts: PropTypes.array.isRequired
