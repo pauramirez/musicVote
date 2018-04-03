@@ -16,7 +16,8 @@ export default class PostList extends Component {
     return this.props.posts.map((p,i) =>
       <Post
         onVote={this.props.onVote}
-        onDelete={this.props.onDelete}        
+        onDelete={this.props.onDelete}
+        onRemoveVote={this.props.onRemoveVote}
         key={i}
         post={p}>
       </Post>
@@ -26,11 +27,9 @@ export default class PostList extends Component {
     return (
       <div className="PostList">
       <hr/>
-        <h2>Songs:🎤🎧</h2>        
-        <h3>Canciones votadas</h3>
-        <div className="row">
+        <h2>Songs: 🎤🎧</h2>        
+        <h3>You voted for: </h3>
           {this.renderPosts()}
-        </div>
       </div>
     );
   }

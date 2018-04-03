@@ -26,6 +26,22 @@ export default class Post extends Component {
     return res;
   }
 
+  renderRemoveVotes() {
+    let res=[];
+    for (let song in this.props.post.not) {
+      res.push(
+        <button
+          onClick={() =>
+            this.props.onRemoveVote(
+              this.props.post,
+              song
+            )}
+          key={song}>{song} {this.props.post.not[song]}</button>
+      );
+    }
+    return res;
+  }
+
   renderDelete() {
     let res=[];
     for (let song in this.props.post.delete) {
@@ -44,14 +60,21 @@ export default class Post extends Component {
 
   render() {
     return (
-      <div className="Post">
-      <h3></h3>
-        <div>{this.props.post.text}</div>
-        <div>By: {this.props.post.artist}</div>
-        <div>Voted {this.props.post.voteCount} times</div>
-        <div>Find it at: {this.props.post.url}</div>
-        {this.renderVotes()}
-        {this.renderDelete()}
+        <div className="Post">
+        <div className ="row">
+          <div className="col-sm-6">
+            <div><h5>{this.props.post.text}</h5></div>
+            <div>By: {this.props.post.artist}</div>
+            <div>Voted {this.props.post.voteCount} times</div>
+          </div>
+          <div className="col-sm-6">
+            <div>Find it at: <a href={this.props.post.url}>Video</a></div>
+            {this.renderVotes()}
+            {this.renderRemoveVotes()}
+            {this.renderDelete()}
+          </div>
+        </div>
+        <br/>
       </div>
     );
   }

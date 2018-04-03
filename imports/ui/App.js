@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withTracker } from "meteor/react-meteor-data";
 
+import AccountsUIWrapper from './AccountsUIWrapper';
+import { Meteor } from 'meteor/meteor';
 
 import PostList from "./PostList";
 import PostAdd from "./PostAdd";
@@ -10,12 +12,39 @@ import { Posts } from "../api/posts";
 
 var titulo =".*.*";
 //var titulo =".*a.*";
+var currentUser ="";
+
+
 export class App extends Component {
+
+
+
   constructor(props) {
     super(props);
 
   }
 
+  getCurrentUser(){
+    currentUser = Meteor.user().username;
+  }
+
+  onRemoveVote(post, song) {
+    let postObj = Posts.findOne(post._id);
+
+    if (!postObj) {
+      console.err("Post not found!");
+      return;
+    }
+
+    postObj.voteCount-=1;
+    if (postObj.not[song]===undefined) {
+      postObj.not[song]=0;
+    }
+    postObj.not[song]-=1;
+
+    Posts.update(postObj._id,
+      postObj);
+  }
 
   onVote(post, song) {
     let postObj = Posts.findOne(post._id);
@@ -50,12 +79,13 @@ export class App extends Component {
       url,
       voteCount:0,
       votes:{
-        love:0,
-        like:0,
-        not:0
+        Love:0
+      },
+      not:{
+        Not:0
       },
       delete:{
-        delete:""
+        Delete:""
       }
     });
   }
@@ -69,37 +99,38 @@ export class App extends Component {
   render() {    
     return (
       <div className="App">
-        <div className="container">
-          <h2>Music Vote</h2>
+         <AccountsUIWrapper />
+          <h2>Music Vote {currentUser}</h2>
           <p>This is a web page for you to vote for your favorite song! Or add your favorite one.</p>
           <p>This will show the first 10 songs according to the number of votes!</p>
           <p>Let's play!</p>
-          <div className="col-sm-6">
-            <PostList
+          <PostList
               posts={this.props.posts}
               onVote={this.onVote.bind(this)}
+              onRemoveVote={this.onRemoveVote.bind(this)}
               onDelete={this.onDelete.bind(this)}
-            >
-            </PostList>
-            <br/>
-            <PostFilter
+          >
+          </PostList>
+          <br/>
+          <div className ="row">
+            <div className="col-sm-6">
+              <PostAdd
+                onAdd={this.onAdd.bind(this)}
+              >
+              </PostAdd>
+            </div>
+            <div className="col-sm-6">
+              <PostFilter
               onFilter={this.onFilter.bind(this)}
             >
             </PostFilter>
-            <br/>
-            <PostAdd
-              onAdd={this.onAdd.bind(this)}
-            >
-            <div className="col-sm-6">
-          <a href="https://www.youtube.com/results?search_query=">Video</a>
-          </div>
-          </PostAdd>
-          </div>
+            </div>
           </div>
       </div>
     );
   }
 }
+
 
 App.propTypes = {
   posts: PropTypes.array.isRequired
