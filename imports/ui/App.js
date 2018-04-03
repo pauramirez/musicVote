@@ -93,6 +93,7 @@ export class App extends Component {
   {  
     var str1 = ".*"+text+".*";
     titulo = str1;
+    alert("We are experiencing some difficulties with the filter service, please try again.");
   }
 
 
