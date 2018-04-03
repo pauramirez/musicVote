@@ -1,7 +1,7 @@
 # MusicVote
 
 
-#To start
+# To start
 
 This project needs MeteorJS and ReactJS to succesfully start, so you should have them installed.
 
@@ -14,11 +14,11 @@ meteor npm install --save @babel/runtime
 
 You can install meteor here(https://www.meteor.com/install)
 
-#Prerequisites
+# Prerequisites
 
 First download the npm dependencies with
 
-npm install
+meteor npm install
 
 Now execute this command in the root folder:
 
