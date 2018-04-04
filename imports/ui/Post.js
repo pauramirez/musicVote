@@ -9,7 +9,7 @@ export default class Post extends Component {
 
     };
   }
-
+//No es recomendable permitir votar mas de 1 vez por una cancion
   renderVotes() {
     let res=[];
     for (let song in this.props.post.votes) {
