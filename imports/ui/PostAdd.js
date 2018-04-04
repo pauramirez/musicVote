@@ -9,6 +9,8 @@ export default class PostAdd extends Component {
 
     };
   }
+  
+  //Camilo A Carrillo N: Podrian ordenar mejor el codigo para que este se pueda leer mas facilmente
   render() {
     return (
       <div className="PostAdd">
