@@ -14,7 +14,8 @@ var titulo =".*.*";
 //var titulo =".*a.*";
 //var currentUser =Meteor.user().username;
 
-
+//Camilo A Carrillo N: No se deben hacer llamadas directas que modifiquen la BD desde el lado del cliente, para esto usen Meteor 
+// Methods y hagan el llamado mediante Meteor.call("", );
 export class App extends Component {
 
 
@@ -50,7 +51,8 @@ export class App extends Component {
       postObj.not[song]=0;
     }
     postObj.not[song]-=1;
-
+    
+    //Camilo A Carrillo N: EJ: Meteor.call("Posts.removeVote", song.id);
     Posts.update(postObj._id,
       postObj);
   }
@@ -69,6 +71,7 @@ export class App extends Component {
     }
     postObj.votes[song]+=1;
 
+    //Camilo A Carrillo N: EJ: Meteor.call("Posts.addVote", song.id);
     Posts.update(postObj._id,
       postObj);
   }
@@ -76,6 +79,7 @@ export class App extends Component {
   onDelete(post, song) {
     if(this.isUserAdmin()){
       let postObj = Posts.findOne(post._id);
+      
       Posts.remove(postObj._id);
     }
     else{window.alert("You are not admin, sorry! 😔")}
@@ -84,6 +88,8 @@ export class App extends Component {
   onAdd(text,artist,url) {
     if(this.isUserActive()){
       if (!text) return;
+      
+      //Camilo A Carrillo N: EJ: Meteor.call("Posts.addSong", text, artist, url);
       Posts.insert({
         text,
         //inclui el artista y url del video
