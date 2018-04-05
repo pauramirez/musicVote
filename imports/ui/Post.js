@@ -14,7 +14,7 @@ export default class Post extends Component {
     let res=[];
     for (let song in this.props.post.votes) {
       res.push(
-        <button
+        <button className="love"
           onClick={() =>
             this.props.onVote(
               this.props.post,
@@ -30,7 +30,7 @@ export default class Post extends Component {
     let res=[];
     for (let song in this.props.post.not) {
       res.push(
-        <button
+        <button className="not"
           onClick={() =>
             this.props.onRemoveVote(
               this.props.post,
@@ -46,7 +46,7 @@ export default class Post extends Component {
     let res=[];
     for (let song in this.props.post.delete) {
       res.push(
-        <button
+        <button className="delete"
           onClick={() =>
             this.props.onDelete(
               this.props.post,
