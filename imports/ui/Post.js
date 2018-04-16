@@ -63,13 +63,16 @@ export default class Post extends Component {
   render() {
     return (
         <div className="Post">
+        <hr/>
         <div className ="row">
           <div className="col-sm-6">
-            <div><h5>{this.props.post.text}</h5></div>
+         
+            <div><h5>🎶{this.props.post.text}</h5></div>
             <div>By: {this.props.post.artist}</div>
             <div>Voted {this.props.post.voteCount} times</div>
           </div>
           <div className="col-sm-6">
+
             <div>Find it at: <a href={this.props.post.url}>Video</a></div>
             {this.renderVotes()}
             {this.renderRemoveVotes()}

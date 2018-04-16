@@ -65,21 +65,52 @@ input {
 }
 
 button.love{
-  background-color: #d1e1f5;
+  background-color: #d5e5f5;
 }
 
 button.not{
-  background-color: #e9d2e1;
+  background-color: #f0e1f1;
 }
 
 button.delete{
-  background-color: #dfd6d9;
+  background-color: #e5e7f7;
 }
 nav{
   background-color: #e0d4de;
 }
 
+.head{
+  background-color: #f5f0f7;
+  text-align: left;
+}
 
+.made{
+  background-color: #f5f0f7;
+  text-align: left;
+}
+
+.made h5{
+  text-align: center;
+  color: #174f6b;
+  font-size: 25px;
+}
+
+.made a{
+  font-family: Georgia, serif;
+  font-style: italic;
+}
+
+.postslist{
+  text-align: center;
+}
+
+.PostAdd input{
+  font-size: 13px;
+}
+
+.PostFilter input{
+  font-size: 13px;
+}
 
 
 
