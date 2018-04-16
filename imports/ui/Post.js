@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { Meteor } from 'meteor/meteor';
 
 export default class Post extends Component {
+  
   constructor(props) {
     super(props);
 
@@ -14,7 +16,7 @@ export default class Post extends Component {
     let res=[];
     for (let song in this.props.post.votes) {
       res.push(
-        <button
+        <button className="love"
           onClick={() =>
             this.props.onVote(
               this.props.post,
@@ -30,7 +32,7 @@ export default class Post extends Component {
     let res=[];
     for (let song in this.props.post.not) {
       res.push(
-        <button
+        <button className="not"
           onClick={() =>
             this.props.onRemoveVote(
               this.props.post,
@@ -46,7 +48,7 @@ export default class Post extends Component {
     let res=[];
     for (let song in this.props.post.delete) {
       res.push(
-        <button
+        <button className="delete"
           onClick={() =>
             this.props.onDelete(
               this.props.post,
@@ -61,13 +63,16 @@ export default class Post extends Component {
   render() {
     return (
         <div className="Post">
+        <hr/>
         <div className ="row">
           <div className="col-sm-6">
-            <div><h5>{this.props.post.text}</h5></div>
+         
+            <div><h5>🎶{this.props.post.text}</h5></div>
             <div>By: {this.props.post.artist}</div>
             <div>Voted {this.props.post.voteCount} times</div>
           </div>
           <div className="col-sm-6">
+
             <div>Find it at: <a href={this.props.post.url}>Video</a></div>
             {this.renderVotes()}
             {this.renderRemoveVotes()}

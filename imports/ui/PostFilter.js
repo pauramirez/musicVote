@@ -12,10 +12,22 @@ export default class PostFilter extends Component {
   render() {
     return (
       <div className="PostFilter">
-        <p>Find your song <br/><input
+       <hr/>
+       <h5>Find your song by...</h5>
+        <select>
+          <option value default>Select search type</option>
+          <option value="SONG">Song</option>
+          <option value="ARTIST">Artist</option>
+          <option value="LIST">Playlist</option>
+        </select> <br/>
+        <p>Search
+        <br/>
+        <input
+          className="searchSong"
           type="text"
           placeholder="Find"
           ref="text"/></p>
+
         <button
           onClick={
             () =>
@@ -31,3 +43,7 @@ export default class PostFilter extends Component {
 PostFilter.propTypes = {
   onFilter:PropTypes.func.isRequired
 };
+
+
+
+//onChange={(event) => this.handleTypeChange(event)}

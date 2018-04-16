@@ -12,6 +12,8 @@ export default class PostAdd extends Component {
   render() {
     return (
       <div className="PostAdd">
+       <hr/>
+        <h5>Add a new song to vote!</h5>
         <p>Song: <br/><input
           type="text"
           placeholder="Enter your song"
