@@ -1,7 +1,13 @@
 /* CSS declarations go here */
 
+body{
+  /*background-color: #e9f0f7;*/
+  background-image: "../images/background.jpg";
+}
+
 a{
-  font-family: "Times new roman", Times, serif;
+  /*font-family: "Times new roman", Times, serif;*/
+  font-family: Georgia, serif;
 }
 
 ul {
@@ -22,18 +28,24 @@ h1{
 h2{
   color: #70608f;
   text-align: center;
-  /*font-family: Georgia, serif;*/
-  font-family: 'Lobster', cursive;
+  font-family: Georgia, serif;
+  /*font-family: 'Lobster', cursive;*/
 }
 
 h3{
   color: #2a82cb;
   text-align: left;
+  font-family: Georgia, serif;
+}
+
+h5{
+  font-family: 'Lobster', cursive;
 }
 
 p{
   color: black;
-  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  /*font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";*/
+  font-family: Georgia, serif;
 }
 
 ul li {
@@ -62,6 +74,9 @@ button.not{
 
 button.delete{
   background-color: #dfd6d9;
+}
+nav{
+  background-color: #e0d4de;
 }
 
 

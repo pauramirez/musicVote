@@ -9,10 +9,13 @@ import PostList from "./PostList";
 import PostAdd from "./PostAdd";
 import PostFilter from "./PostFilter";
 import { Posts } from "../api/posts";
+import NavBar from "./NavBar"
 
 var titulo =".*.*";
 //var titulo =".*a.*";
-//var currentUser =Meteor.user().username;
+var client_id = 'CLIENT_ID'; // Your client id
+var client_secret = 'CLIENT_SECRET'; // Your secret
+var redirect_uri = 'REDIRECT_URI'; // Your redirect uri
 
 
 export class App extends Component {
@@ -31,32 +34,38 @@ export class App extends Component {
   }
 
   isUserActive(){
-    if (Meteor.user().username != null || Meteor.user().roll != null) {
-      return true;
+    console.log(Meteor.user().username)
+    if (Meteor.user().username == null || Meteor.user() == undefined) {
+      return false;
     }
-    else return false;
+    else return true;
   }
 
   onRemoveVote(post, song) {
-    let postObj = Posts.findOne(post._id);
+    if(this.isUserActive()){
+      let postObj = Posts.findOne(post._id);
 
-    if (!postObj) {
-      console.err("Post not found!");
-      return;
+      if (!postObj) {
+        console.err("Post not found!");
+        return;
+      }
+
+      postObj.voteCount-=1;
+      if (postObj.not[song]===undefined) {
+        postObj.not[song]=0;
+      }
+      postObj.not[song]-=1;
+
+      Posts.update(postObj._id,
+        postObj);
+      window.alert("We've registered you vote!")
     }
-
-    postObj.voteCount-=1;
-    if (postObj.not[song]===undefined) {
-      postObj.not[song]=0;
-    }
-    postObj.not[song]-=1;
-
-    Posts.update(postObj._id,
-      postObj);
+    else{window.alert("Not in the game?, Register and play!")}
   }
 
   onVote(post, song) {
-    let postObj = Posts.findOne(post._id);
+    if(this.isUserActive()){
+      let postObj = Posts.findOne(post._id);
 
     if (!postObj) {
       console.err("Post not found!");
@@ -71,12 +80,19 @@ export class App extends Component {
 
     Posts.update(postObj._id,
       postObj);
+    window.alert("We've registered you vote!")
+  }
+  else{window.alert("Not in the game?, Register and play!")}
   }
 
   onDelete(post, song) {
     if(this.isUserAdmin()){
       let postObj = Posts.findOne(post._id);
       Posts.remove(postObj._id);
+      window.alert("Deleted song successfully! 😃")
+    }
+    else if(!this.isUserActive()){
+      window.alert("Not in the game?, Register and play!")
     }
     else{window.alert("You are not admin, sorry! 😔")}
   }
@@ -84,7 +100,8 @@ export class App extends Component {
   onAdd(text,artist,url) {
     if(this.isUserActive()){
       if (!text) return;
-      Posts.insert({
+      Meteor.call('posts.insert', 
+        {
         text,
         //inclui el artista y url del video
         artist,
@@ -100,6 +117,7 @@ export class App extends Component {
           Delete:""
       }
     });
+      window.alert("We've added your song! wait to see how many people think the way you do!")
     }
     else{window.alert("Not in the game?, Register and play!")}
   }
@@ -114,7 +132,8 @@ export class App extends Component {
   render() {    
     return (
       <div className="App">
-         <AccountsUIWrapper />
+          <NavBar/>
+          <hr/>
           <h2>Music Vote</h2>
           <p>This is a web page for you to vote for your favorite song! Or add your favorite one.</p>
           <p>This will show the first 10 songs according to the number of votes!</p>

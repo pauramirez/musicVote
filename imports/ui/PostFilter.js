@@ -12,7 +12,9 @@ export default class PostFilter extends Component {
   render() {
     return (
       <div className="PostFilter">
-        <p>Find your song <br/><input
+        <p>Find your song <br/>
+        <input
+          className="searchSong"
           type="text"
           placeholder="Find"
           ref="text"/></p>

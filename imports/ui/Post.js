@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { Meteor } from 'meteor/meteor';
 
 export default class Post extends Component {
+  
   constructor(props) {
     super(props);
 

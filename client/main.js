@@ -13,22 +13,16 @@ Meteor.startup(() => {
 
 });
 
-//if (Meteor.isClient) {
-//    onYouTubeIframeAPIReady = function () {
-//        player = new YT.Player("player", {
-//    
-//            height: "400", 
-//            width: "600", 
-//            videoId: "LdH1hSWGFGU", 
-//            events: {
-//      
-//                onReady: function (event) {
-//                    event.target.playVideo();
-//                }
-//            }
-//        });
-//    };
-//    YT.load();
-//}
+
+//Search events
+// App.PostFilter.events({
+// 	"keyup #searchSong":function(){
+// 		let searchText = event.target.value;
+// 		console.log(searchText);
+// 	}
+// })
 
 
+//archivo de configuracion
+// var scopes = ['playlist-modify-private', 'user-library-read','user-follow-read', 'playlist-read-private'];
+// Accounts.ui.config({'requestPermissions':{'spotify':scopes}});

@@ -30,6 +30,7 @@ export default class PostList extends Component {
         <h2>Songs: 🎤🎧</h2>        
         <h3>You voted for: </h3>
           {this.renderPosts()}
+          <hr/>
       </div>
     );
   }
