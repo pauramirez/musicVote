@@ -63,3 +63,5 @@ if (Meteor.isServer) {
     });
   });
 }
+
+//No hay test de clases del lado del cliente. 
