@@ -148,7 +148,7 @@ export class App extends Component {
               </PostAdd>
             </div>
             </div>
-          </div>
+          
       </div>
     );
   }
