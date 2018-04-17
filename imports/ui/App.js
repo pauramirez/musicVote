@@ -31,15 +31,12 @@ export class App extends Component {
     if (Meteor.user().username == "pauramirez" || Meteor.user().roll == "full") {
       return true;
     }
-    else if(!isUserActive()){
-      return false;
-    }
     else return false;
   }
 
   isUserActive(){
     console.log(Meteor.user().username);
-    if (Meteor.user().username == null || Meteor.user() == undefined || Meteor.user() == "") {
+    if (Meteor.user().username == null || Meteor.user().username == undefined || Meteor.user().username == "") {
       return false;
     }
     else return true;
@@ -93,13 +90,13 @@ export class App extends Component {
 
 
   onDelete(post, song) {
-    if(this.isUserAdmin()){
+    if(this.isUserAdmin() || Posts.findOne(post._id).user == Meteor.user().username){
       let postObj = Posts.findOne(post._id);
       //Posts.remove(postObj._id);
       Meteor.call('postsRemove', postObj._id);
       window.alert("Deleted song successfully! 😃")
     }
-    else if(!this.isUserActive()){
+    else if(this.isUserActive() == false){
       window.alert("Not in the game?, Register and play!")
     }
     else{window.alert("You are not admin, sorry! 😔")}
@@ -109,23 +106,7 @@ export class App extends Component {
     if(this.isUserActive()){
       if (!text) return;
       Meteor.call('postsInsert',
-        text, artist, url
-      //Posts.insert(
-      // {
-      //   text,
-      //   artist,
-      //   url,
-      //   voteCount:0,
-      //   votes:{
-      //     Love:0
-      //   },
-      //   not:{
-      //     Not:0
-      //   },
-      //   delete:{
-      //     Delete:""
-      //   }
-      // }
+        Meteor.user().username, text, artist, url
     );
       window.alert("We've added your song! wait to see how many people think the way you do!")
     }
@@ -134,9 +115,9 @@ export class App extends Component {
 
   onFilter(text)
   {  
-    var str1 = ".*"+text+".*";
-    titulo = str1;
-    alert("We are experiencing some difficulties with the filter service, please try again.");
+    console.log(text);
+    Meteor.call('songFind', text);
+    alert("We have recieved your search.");
   }
 
   render() {    
@@ -188,7 +169,7 @@ export default withTracker(
     Meteor.subscribe('posts');
     return {
       //lo limite al top 10 mas votadas
-      posts: Posts.find({"text" : {$regex : titulo}}, {limit: 10,sort: {voteCount:-1}}).fetch()
+      posts: Posts.find({"text" : {$regex : titulo}}, {limit: 15,sort: {voteCount:-1}}).fetch()
     };
   }
 )(App);
