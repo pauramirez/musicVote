@@ -18,7 +18,7 @@ class NavBar extends Component {
 
     render() {
         return (
-            <Router>
+            // <Router>
                 <div>
                     <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
                         <div className="container">
@@ -28,7 +28,7 @@ class NavBar extends Component {
                         </div>
                      </nav>
                 </div>
-            </Router>
+            // </Router>
         );
     }
 }

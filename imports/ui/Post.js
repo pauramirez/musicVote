@@ -75,8 +75,9 @@ export default class Post extends Component {
           <div className="col-sm-6">
 
             <div>
-
+            
             <div>Find it at: <a href={this.props.post.url}>Video</a></div>
+            </div>
             {this.renderVotes()}
             {this.renderRemoveVotes()}
             {this.renderDelete()}
@@ -92,3 +93,4 @@ Post.propTypes = {
   post: PropTypes.object.isRequired,
   onVote: PropTypes.func.isRequired
 };
+
