@@ -146,7 +146,8 @@ export class App extends Component {
                 onAdd={this.onAdd.bind(this)}
               >
               </PostAdd>
-            
+            </div>
+            </div>
           </div>
       </div>
     );
