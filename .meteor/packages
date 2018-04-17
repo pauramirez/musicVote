@@ -26,3 +26,6 @@ accounts-ui
 alanning:roles
 practicalmeteor:mocha
 http
+iron:router
+session
+twbs:bootstrap
