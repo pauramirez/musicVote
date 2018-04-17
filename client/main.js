@@ -13,6 +13,7 @@ Meteor.startup(() => {
 
 });
 
+
 //Search events
 // App.PostFilter.events({
 // 	"keyup #searchSong":function(){
