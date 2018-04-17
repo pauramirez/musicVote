@@ -41,7 +41,8 @@ Meteor.methods({
         }
     });
   },
-  'postsRemove'(postId) { 
+  'postsRemove'(postId) {
+    //para reforzar la seguridad deberías verificar que hubiera un usuario loggeado o algo por el estilo.
     Posts.remove(postId);
   },
 
@@ -58,6 +59,8 @@ Meteor.methods({
     //       Songs.update(song._id, { $set: { lastFm: result.data.results.trackmatches.track[0] } });
     //     }
     //   });
+    //Si tu intención era hacer un get de la base de datos pcon respecto a un filtro lo podías hacer como se hace normalmente. 
+    //Ya en la el archivo donde lo vas a usar deberias llamar esta función la cual recibe un callback con la respuesta.
   },
 
 });
