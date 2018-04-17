@@ -16,6 +16,8 @@ if (Meteor.isServer) {
   });
 }
 
+
+//Buen uso de meteor methods con insert, update y remove
 Meteor.methods({
   'postsInsert'(user, text, artist, url) {
  
