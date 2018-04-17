@@ -14,6 +14,8 @@ if (Meteor.isServer) {
   Meteor.publish('posts', function postsPublication() {
     return Posts.find();
   });
+  
+  //Falta RateLimiter
 }
 
 Meteor.methods({
