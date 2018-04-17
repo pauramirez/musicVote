@@ -15,7 +15,7 @@ if (Meteor.isServer) {
     return Posts.find();
   });
   
-  //Falta RateLimiter
+  //F. Andres Vera: Falta RateLimiter
 }
 
 Meteor.methods({
