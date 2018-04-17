@@ -68,7 +68,8 @@ export default class Post extends Component {
           <div className="col-sm-6">
          
             <div><h5>🎶{this.props.post.text}</h5></div>
-            <div>By: {this.props.post.artist}</div>
+            <div>Artist: {this.props.post.artist}</div>
+            <div>Added by: {this.props.post.user} </div>
             <div>Voted {this.props.post.voteCount} times</div>
           </div>
           <div className="col-sm-6">

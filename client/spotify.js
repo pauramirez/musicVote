@@ -1,3 +1,7 @@
+// import {Meteor} from "meteor/meteor";
+// import { Posts } from "../imports/api/posts";
+
+
 // Template.spotify.onRendered(function() {
 //   // Initialize the typeahead DOM element.
 //   Meteor.typeahead.inject();
