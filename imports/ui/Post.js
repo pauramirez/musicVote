@@ -74,6 +74,8 @@ export default class Post extends Component {
           </div>
           <div className="col-sm-6">
 
+            <div>
+
             <div>Find it at: <a href={this.props.post.url}>Video</a></div>
             {this.renderVotes()}
             {this.renderRemoveVotes()}
