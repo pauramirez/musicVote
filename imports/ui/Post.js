@@ -94,4 +94,3 @@ Post.propTypes = {
   onVote: PropTypes.func.isRequired
 };
 
-

@@ -52,9 +52,6 @@ Meteor.methods({
   songFind(post) {
 
     // HTTP.call('GET','http://ws.audioscrobbler.com/2.0/?method=artist.search&artist=cher&api_key=770feb48e1d6f73b9247e37bdeec2315&format=json');
-
-    HTTP.call('GET','http://ws.audioscrobbler.com/2.0/?method=artist.search&artist=cher&api_key=770feb48e1d6f73b9247e37bdeec2315&format=json');
-
     // HTTP.get('https://ws.audioscrobbler.com/2.0/', {
     //   params: { method: 'track.search', track: song.data.name + ' ' + song.data.artists[0].name, api_key: process.env.Client_ID, format: 'json' } }, (error, result) => {
     //     if (!error) {

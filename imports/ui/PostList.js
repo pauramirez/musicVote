@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 import Post from "./Post";
+import Video from "./Video";
 
 export default class PostList extends Component {
   constructor(props) {
@@ -21,6 +22,7 @@ export default class PostList extends Component {
         key={i}
         post={p}>
       </Post>
+      // <Video></Video>
     );
   }
   render() {
