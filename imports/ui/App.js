@@ -152,13 +152,8 @@ export class App extends Component {
               >
               </PostAdd>
             </div>
-            <div className="col-sm-6">
-              <PostFilter
-              onFilter={this.onFilter.bind(this)}
-            >
-            </PostFilter>
             </div>
-          </div>
+          
       </div>
     );
   }
