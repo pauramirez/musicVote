@@ -61,6 +61,7 @@ export default class Post extends Component {
   }
 
   render() {
+    console.log(this.props.post.url)
     return (
         <div className="Post">
         <hr/>

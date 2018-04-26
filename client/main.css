@@ -89,6 +89,8 @@ nav{
   padding-left: 20px;
 }
 
+
+
 .made{
   background-color: #f5f0f7;
   text-align: left;
@@ -106,7 +108,7 @@ nav{
 }
 
 .postslist{
-  text-align: center;
+  text-align: left;
 }
 
 .PostAdd input{
