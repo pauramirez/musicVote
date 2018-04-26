@@ -42,6 +42,11 @@ export class App extends Component {
     else return true;
   }
 
+  getURL(post){
+    let postObj = Posts.findOne(post._id);
+    return Meteor.call('postGetURL', postObj._id);
+  }
+
   onRemoveVote(post, song) {
     if(this.isUserActive()){
       let postObj = Posts.findOne(post._id);

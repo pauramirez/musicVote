@@ -15,14 +15,21 @@ export default class PostList extends Component {
 
   renderPosts() {
     return this.props.posts.map((p,i) =>
-      <Post
+      (
+        <div key={i}>
+        <Post
         onVote={this.props.onVote}
         onDelete={this.props.onDelete}
         onRemoveVote={this.props.onRemoveVote}
         key={i}
         post={p}>
       </Post>
-      // <Video></Video>
+      <Video 
+        video={p.url}
+        ></Video>
+      </div>
+        )
+      
     );
   }
   render() {

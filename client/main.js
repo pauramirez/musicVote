@@ -41,17 +41,3 @@ Meteor.startup(() => {
     document.getElementById("render-target"));
 
 });
-
-
-//Search events
-// App.PostFilter.events({
-// 	"keyup #searchSong":function(){
-// 		let searchText = event.target.value;
-// 		console.log(searchText);
-// 	}
-// })
-
-
-//archivo de configuracion
-// var scopes = ['playlist-modify-private', 'user-library-read','user-follow-read', 'playlist-read-private'];
-// Accounts.ui.config({'requestPermissions':{'spotify':scopes}});

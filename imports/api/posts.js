@@ -49,16 +49,22 @@ Meteor.methods({
     Posts.update(postId, post);
   },
 
-  songFind(post) {
+  postGetURL(postId)
+  {
+    let obj = Posts.find(postId);
+    return obj.url;
+  }
 
-    // HTTP.call('GET','http://ws.audioscrobbler.com/2.0/?method=artist.search&artist=cher&api_key=770feb48e1d6f73b9247e37bdeec2315&format=json');
-    // HTTP.get('https://ws.audioscrobbler.com/2.0/', {
-    //   params: { method: 'track.search', track: song.data.name + ' ' + song.data.artists[0].name, api_key: process.env.Client_ID, format: 'json' } }, (error, result) => {
-    //     if (!error) {
-    //       Songs.update(song._id, { $set: { lastFm: result.data.results.trackmatches.track[0] } });
-    //     }
-    //   });
-  },
+  // songFind(post) {
+
+  //   // HTTP.call('GET','http://ws.audioscrobbler.com/2.0/?method=artist.search&artist=cher&api_key=770feb48e1d6f73b9247e37bdeec2315&format=json');
+  //   // HTTP.get('https://ws.audioscrobbler.com/2.0/', {
+  //   //   params: { method: 'track.search', track: song.data.name + ' ' + song.data.artists[0].name, api_key: process.env.Client_ID, format: 'json' } }, (error, result) => {
+  //   //     if (!error) {
+  //   //       Songs.update(song._id, { $set: { lastFm: result.data.results.trackmatches.track[0] } });
+  //   //     }
+  //   //   });
+  // },
 
 });
 
