@@ -63,3 +63,5 @@ if (Meteor.isServer) {
     });
   });
 }
+
+//F. Andrés Vera: No hay test de clases del lado del cliente. 
