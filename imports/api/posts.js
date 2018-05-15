@@ -14,6 +14,8 @@ if (Meteor.isServer) {
   Meteor.publish('posts', function postsPublication() {
     return Posts.find();
   });
+  
+  //F. Andres Vera: Falta RateLimiter
 }
 
 Meteor.methods({
