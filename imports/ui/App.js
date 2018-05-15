@@ -17,6 +17,8 @@ var client_id = 'CLIENT_ID'; // Your client id
 var client_secret = 'CLIENT_SECRET'; // Your secret
 var redirect_uri = 'REDIRECT_URI'; // Your redirect uri
 
+//Me gusta que los imports esten organizados
+
 
 export class App extends Component {
 
@@ -27,6 +29,7 @@ export class App extends Component {
   }
 
   isUserAdmin(){
+    //Deberías quitar todos los logs.
     console.log(Meteor.user().username);
     if (Meteor.user().username == "pauramirez" || Meteor.user().roll == "full") {
       return true;
